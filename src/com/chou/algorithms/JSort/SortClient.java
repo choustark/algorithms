@@ -12,6 +12,6 @@ import java.util.logging.Logger;
 
 public class SortClient {
     public static void main(String[] args) {
-
+        SortHelper.consumeTime("SelectionSort",100);
     }
 }
