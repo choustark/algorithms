@@ -1,6 +1,8 @@
-package com.chou.algorithms.JSort;
+package com.chou.algorithms.JSort.utils;
 
-import com.chou.algorithms.search.GenerateArray;
+import com.chou.algorithms.JSort.BubbleSort;
+import com.chou.algorithms.JSort.InsertionSort;
+import com.chou.algorithms.JSort.SelectionSort;
 
 /**
  * @ClassName SortHelper
@@ -20,6 +22,8 @@ public class SortHelper {
             SelectionSort.selectSort(arr);
         }else if("InsertionSort".equals(sortName)){
             InsertionSort.sortByTranslation(arr);
+        }else if("BubbleSort".equals(sortName)){
+            BubbleSort.sort(arr);
         }
         long endTime = System.nanoTime();
         double costTime = (endTime - startTime) / unit;

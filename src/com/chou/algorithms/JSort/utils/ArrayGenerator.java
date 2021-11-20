@@ -1,4 +1,4 @@
-package com.chou.algorithms.JSort;
+package com.chou.algorithms.JSort.utils;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
