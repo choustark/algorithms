@@ -68,6 +68,15 @@ public class Array<E> {
         add(size, element);
     }
 
+    /**
+     * 在数组的开始位置添加一个元素
+     *
+     * @param element
+     */
+    public void addFirst(E element) {
+        add(0, element);
+    }
+
 
     /**
      * 在任意index位置添加元素
@@ -115,10 +124,11 @@ public class Array<E> {
 
     /**
      * 移除数组的最后一个元素
+     *
      * @return
      */
-    public E removeLast(){
-        return remove(size-1);
+    public E removeLast() {
+        return remove(size - 1);
     }
 
     /**
@@ -159,11 +169,22 @@ public class Array<E> {
 
     /**
      * 获取数组中第一个元素
+     *
      * @return
      */
-    public E getFirst(){
+    public E getFirst() {
         return get(0);
     }
+
+    /**
+     * 获取数据中最后一个元素
+     *
+     * @return
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
     /**
      * 更新索引位 index 的值
      *
@@ -192,12 +213,5 @@ public class Array<E> {
         }
         sb.append("]");
         return sb.toString();
-    }
-
-    public void setData() {
-        data = (E[]) new Integer[]{1, 2, 3, 4, 5};
-        for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i]);
-        }
     }
 }

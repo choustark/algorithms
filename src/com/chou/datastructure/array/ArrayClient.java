@@ -5,7 +5,7 @@ package com.chou.datastructure.array;
  * @author Axel
  * @version 1.0
  * @className ArrayClient
- * @description 数组验证
+ * @description 数组客户端测试
  * @date 2021/11/14 0:11
  */
 
