@@ -184,7 +184,7 @@ public class DummyHeadLinkList<E> {
         if(index<0 && index > size){
             throw new IllegalStateException("Update Failed,Illegal index ");
         }
-        Node prev = dummyHead.next;
+        Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
             // 获取需要被删除节点的前一个节点
             prev = prev.next;
@@ -192,6 +192,7 @@ public class DummyHeadLinkList<E> {
         Node retNode = prev.next;
         prev.next = retNode.next;
         retNode.next = null;
+        size--;
         return retNode.e;
     }
 
@@ -208,16 +209,17 @@ public class DummyHeadLinkList<E> {
      * @return
      */
     public E removeLast(){
-        return remove(size - 1);
+        return remove(size -  1);
     }
 
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
-          builder.append("DummyHeadLinkList size =").append(getLength());
+          builder.append("DummyHeadLinkList size =").append(getLength()).append("-----").append("linkedList:");
         for (Node cur = dummyHead.next; cur != null ; cur = cur.next){
-            builder.append(cur).append("-->");
+            builder.append(cur).append("->");
         }
+        builder.append("null");
         return builder.toString();
     }
 

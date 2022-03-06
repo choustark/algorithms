@@ -1,7 +1,6 @@
 package com.chou.datastructure.stack;
 
 import com.chou.datastructure.linklist.DummyHeadLinkList;
-import com.chou.datastructure.linklist.LinkList;
 
 /**
  * @author Axel

@@ -9,7 +9,7 @@ package com.chou.datastructure.linklist;
  * @date 2022/1/23 14:34
  */
 
-public class LinkList<E> {
+public class LinkedList<E> {
 
     /**
      * 节点类
@@ -44,14 +44,14 @@ public class LinkList<E> {
     /**
      * 元素大小
      */
-     private int size;
+    public int size;
 
     /**
      * 节点
      */
-    private Node head;
+    public Node head;
 
-    public LinkList() {
+    public LinkedList() {
         head = null;
         size = 0;
     }
@@ -59,128 +59,140 @@ public class LinkList<E> {
     /**
      * 获取链表的大小
      */
-    public int getLength(){
+    public int getLength() {
         return size;
     }
 
 
     /**
      * 链表为空判断
+     *
      * @return true or false
      */
-    public Boolean isEmpty(){
-        return  size == 0;
+    public Boolean isEmpty() {
+        return size == 0;
     }
 
 
     /**
      * 在链表的头部添加元素
+     *
      * @param e
      */
-    public void  addFist(E e){
+    public void addFist(E e) {
         //Node node = new Node(e);
         //node.next = head;
         //head = node;
         //size ++;
-        head = new Node(e,head);
-        size ++;
+        head = new Node(e, head);
+        size++;
     }
 
 
     /**
      * 在链表指定位置添加元素 需要找出插入节点的前一个节点
+     *
      * @param index
      * @param e
      */
-    public void add(int index,E e){
-        if(index < 0 && index > size ){
+    public void add(int index, E e) {
+        if (index < 0 && index > size) {
             throw new IllegalStateException("Add failed. Illegal index");
         }
-        if(index == 0){
+        if (index == 0) {
             // 在头节点增加
             addFist(e);
-        }else {
+        } else {
             Node prev = head;
             // 从第一个节点开始循环
-            for (int i = 0; i < index -1 ; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 // 如果当前节点位置前于需要添加的节点则需要将 prev 的下一个节点赋值给prev 直至循环结束
                 prev = prev.next;
             }
             Node node = new Node(e);
             node.next = prev.next;
             prev.next = node;
-            size ++;
+            size++;
         }
     }
 
     /**
      * 在链表尾部增加节点
+     *
      * @param e
      */
-    public void addLast(E e){
-        add(size,e);
+    public void addLast(E e) {
+        add(size, e);
     }
 
 
-    public E getFirst(){
-        if(isEmpty()){
+    public E getFirst() {
+        if (isEmpty()) {
             return null;
-        }else {
+        } else {
             return head.e;
         }
     }
+
     /**
-     *
      * @param index
      * @return
      */
-    public E get(int index){
-        if(index < 0 || index > size){
+    public E get(int index) {
+        if (index < 0 || index > size) {
             throw new IllegalStateException("Get() failed! index illegal");
         }
-        if(index == 0){
+        if (index == 0) {
             getFirst();
         }
         Node retNode = head;
-        for (int i = 0; i <index - 1; i++) {
-            retNode = head.next;
+        for (int i = 0; i < index - 1; i++) {
+            retNode = retNode.next;
         }
         return retNode.next.e;
     }
 
     /**
      * 获取最后一个节点的数据
+     *
      * @return
      */
-    public E getLast(){
+    public E getLast() {
         return get(size);
     }
 
     /**
      * 移除链表的第一个元素
+     *
      * @return
      */
-    public E removeFirst(){
-        if(isEmpty()){
+    public E removeFirst() {
+        if (isEmpty()) {
             throw new IllegalStateException("removeFirst() failed! LinkedList is null");
-        }else {
-            return head.e;
+        } else {
+            Node retNode = head;
+            head = retNode.next;
+            retNode.next = null;
+            size--;
+            return retNode.e;
+
         }
     }
 
     /**
      * 移除链表中某个位置的节点
+     *
      * @param index
      * @return
      */
-    public E remove(int index){
-        if(index < 0 || index > size){
+    public E remove(int index) {
+        if (index < 0 || index > size) {
             throw new IllegalStateException("Remove() failed! index illegal");
         }
         Node prev = head;
         for (int i = 0; i < index - 1; i++) {
             // 获取需要被删除节点的前一个节点
-            prev = head.next;
+            prev = prev.next;
         }
         Node retNode = prev.next;
         prev.next = retNode.next;
@@ -191,57 +203,61 @@ public class LinkList<E> {
 
     /**
      * 移除链表的最后一个节点
+     *
      * @return
      */
-    public E removeLast(){
-        return remove(size);
+    public E removeLast() {
+        return remove(size-1);
     }
 
     /**
      * 链表中是否包含指定节点
+     *
      * @param e
      * @return
      */
-    public boolean contain(E e){
+    public boolean contain(E e) {
         Node cur = head;
-        while (cur.next != null){
-            if(e.equals(cur.e)){
+        while (cur != null) {
+            if (e.equals(cur.e)) {
                 return true;
             }
             cur = cur.next;
         }
         return false;
-
     }
 
     /**
      * 更新链表某个位置节点
+     *
      * @param index
      * @param e
      */
-    public void update(int index,E e){
+    public void update(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalStateException("Update() failed! index illegal");
         }
         Node cur = head;
         for (int i = 0; i < index - 1; i++) {
-            cur = head.next;
+            cur = cur.next;
         }
-        cur.e = e;
+        cur.next.e = e;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder resultBuilder = new StringBuilder();
-        resultBuilder.append("LinkedList size ={}");
+        resultBuilder.append("LinkedList size " + size).append(":");
         Node cur = head;
-        while (null != cur){
-            resultBuilder.append(cur).append("-->");
+        while (null != cur) {
+            resultBuilder.append(cur).append("->");
             cur = cur.next;
         }
+        resultBuilder.append("null");
         return resultBuilder.toString();
     }
 
 
-
 }
+
+
