@@ -1,5 +1,7 @@
 package com.chou.datastructure.queue;
 
+import com.chou.datastructure.stack.ArrayStack;
+
 /**
  * @author Axel
  * @version 1.0
@@ -9,6 +11,8 @@ package com.chou.datastructure.queue;
  */
 
 public class StackQueue<E> implements Queue<E> {
+    public ArrayStack<E> leftStack;
+    public ArrayStack<E>  rightStack;
     @Override
     public void enqueue(E element) {
 

@@ -9,4 +9,5 @@ package com.chou.datastructure.linklist;
  */
 
 public class DoubleDummyHeadLinkedList {
+    
 }

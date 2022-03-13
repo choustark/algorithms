@@ -1,5 +1,6 @@
 package com.chou.datastructure.queue;
 
+import com.chou.datastructure.linklist.LinkedList;
 import com.chou.datastructure.stack.ArrayStack;
 
 /**
@@ -11,10 +12,44 @@ import com.chou.datastructure.stack.ArrayStack;
  */
 
 public class LinkedListQueue<E> implements Queue<E>{
-    public ArrayStack<E>  leftStack;
-    public ArrayStack<E>  rightStack;
+
+    /**
+     * 节点类
+     * 用于存储参数、下个节点信息
+     */
+    private class Node {
+        E e;
+        Node next;
+
+        public Node(E e, Node node) {
+            this.e = e;
+            this.next = node;
+        }
+
+        public Node(E e) {
+            this.e = e;
+            this.next = null;
+        }
+
+        public Node() {
+            this.e = null;
+            this.next = null;
+        }
+
+        @Override
+        public String toString() {
+            return e.toString();
+        }
+
+    }
+
+    // 定义头节点和未节点
+    public Node tail,front;
+    // 队列长度
+    public int size;
+
     @Override
-    public void enqueue(Object element) {
+    public void enqueue(E element) {
 
     }
 
