@@ -85,17 +85,43 @@ public class Array<E> {
      * @param element 4,5,3,2,1,6
      */
     public void add(int index, E element) {
-        if (index == getCapacity()) {
-            throw new RuntimeException("Add failed,this Array is full");
-        }
         if (index < 0 || index > size) {
             throw new RuntimeException("Add element is failed,Required index >=0 and index =< size");
         }
+        if (index == getCapacity()) {
+            //expandCapacity(getCapacity() * 2);
+            reSize();
+            /*throw new RuntimeException("Add failed,this Array is full");*/
+        }
+
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
         data[index] = element;
         size++;
+    }
+
+    /**
+     * 扩容
+     * @param newSize
+     */
+    private void expandCapacity(int newSize){
+        E newArray[] = (E[]) new Object[newSize];
+        //循环原有的数组放到新数组中
+        for (int i = 0; i < data.length; i++) {
+            newArray[i] = data[i];
+        }
+        data = newArray;
+    }
+
+    /**
+     * 扩容
+     * 使用java内部api扩容
+     */
+    private void reSize(){
+        E newArray[] = (E[]) new Object[data.length * 2];
+        System.arraycopy(data,0,newArray,0,data.length);
+        data = newArray;
     }
 
     /**
