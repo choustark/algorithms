@@ -1,7 +1,5 @@
 package com.chou.algorithms.JSort;
 
-import edu.princeton.cs.algs4.In;
-
 /**
  * @className InsertSort
  * @description 插入排序

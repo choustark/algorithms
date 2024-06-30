@@ -17,7 +17,7 @@ public abstract class AbsSort {
      * @param expectIndex
      * @param <E> 数组数据类型
      */
-    public  static<E extends Comparable<E>> void swap(E[] arr,int originIndex,int expectIndex){
+    public  static<E extends Comparable<E>>  void  swap(E[] arr,int originIndex,int expectIndex){
         E temp = arr[originIndex];
         arr[originIndex] = arr[expectIndex];
         arr[expectIndex] = temp;

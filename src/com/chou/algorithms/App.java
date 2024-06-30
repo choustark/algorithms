@@ -1,11 +1,5 @@
 package com.chou.algorithms;
 
-import com.chou.datastructure.array.Array;
-import edu.princeton.cs.algs4.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @ClassName App
  * @Description TODO
@@ -53,6 +47,10 @@ public class App {
             return list1.contains(e);
         });
         System.out.println(list);*/
+        // 打印10 的二进制
+        String s = Integer.toBinaryString(1);
+        String s1 = Integer.toBinaryString(10);
+        System.out.println(s);System.out.println(s1);
 
 
     }

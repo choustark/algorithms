@@ -1,5 +1,6 @@
 package com.chou.algorithms.JSort;
 
+import com.chou.algorithms.JSort.utils.ArrayGenerator;
 import com.chou.algorithms.JSort.utils.SortHelper;
 
 /**
@@ -13,10 +14,11 @@ import com.chou.algorithms.JSort.utils.SortHelper;
 public class SortClient {
     public static void main(String[] args) {
         //SortHelper.consumeTime("SelectionSort", 100);
-        int[] loopNums = new int[]{10000, 100000};
+        int[] loopNums = new int[]{10000, 100000,100000};
         for (int i = 0; i < loopNums.length; i++) {
             SortHelper.consumeTime("SelectionSort", loopNums[i]);
             SortHelper.consumeTime("InsertionSort", loopNums[i]);
+            SortHelper.consumeTime("MergeSort", loopNums[i]);
         }
     }
 }

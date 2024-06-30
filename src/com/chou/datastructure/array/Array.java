@@ -171,6 +171,7 @@ public class Array<E> {
         if (index < 0 || index > size) {
             throw new IllegalStateException("Remove() is failed,the index must to great than zero and less than size");
         }
+        // todo 缩容操作
         E oldValue = data[index];
         for (int i = index; i < size; i++) {
             data[i] = data[i + 1];
