@@ -1,9 +1,6 @@
 package com.chou.algorithms.JSort.utils;
 
-import com.chou.algorithms.JSort.BubbleSort;
-import com.chou.algorithms.JSort.InsertionSort;
-import com.chou.algorithms.JSort.MergeSort;
-import com.chou.algorithms.JSort.SelectionSort;
+import com.chou.algorithms.JSort.*;
 
 /**
  * @ClassName SortHelper
@@ -14,28 +11,33 @@ import com.chou.algorithms.JSort.SelectionSort;
  */
 
 public class SortHelper {
-    public static final double unit =1000000000.0d;
+    public static final double unit = 1000000000.0d;
+
     //计算时间方法
     public static <E> void consumeTime(String sortName, int n) {
         Integer[] arr = ArrayGenerator.generatorArrRandom(n, n);
         long startTime = System.nanoTime();
         if ("SelectionSort".equals(sortName)) {
             SelectionSort.selectSort(arr);
-        }else if("InsertionSort".equals(sortName)){
+        } else if ("InsertionSort".equals(sortName)) {
             InsertionSort.sortByTranslation(arr);
-        }else if("BubbleSort".equals(sortName)){
+        } else if ("BubbleSort".equals(sortName)) {
             BubbleSort.sort(arr);
-        }else if ("MergeSort".equals(sortName)){
+        } else if ("MergeSort".equals(sortName)) {
             MergeSort.sort(arr);
+        } else if ("QuickSort".equals(sortName)) {
+            QuickSort.sort(arr);
+        } else {
+            throw new IllegalArgumentException("Unsupported sort name: " + sortName);
         }
         long endTime = System.nanoTime();
         double costTime = (endTime - startTime) / unit;
-        if(SortHelper.checkSort(arr)){
+        System.out.println(sortName + "排序" + n + "个元素耗时：" + costTime);
+        if (SortHelper.checkSort(arr)) {
             System.out.println("arr sorted success!");
-        }else {
+        } else {
             throw new RuntimeException("arr sorted is failed!");
         }
-        System.out.println(sortName +"排序"+n+ "个元素耗时：" + costTime);
     }
 
     // 校验算法是够排序成功
