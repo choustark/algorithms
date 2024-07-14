@@ -20,9 +20,8 @@ public class SortClient {
             SortHelper.consumeTime("InsertionSort", loopNums[i]);
             SortHelper.consumeTime("MergeSort", loopNums[i]);
         }*/
-        int n = 1000000;
-        SortHelper.consumeTime("QuickSort",n);
-        SortHelper.consumeTime("MergeSort",n);
+        SortHelper.consumeTime("QuickSort",1000000);
+        SortHelper.consumeTime("MergeSort",1000000);
 
 
 

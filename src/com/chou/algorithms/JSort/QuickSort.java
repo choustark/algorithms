@@ -1,5 +1,7 @@
 package com.chou.algorithms.JSort;
 
+import java.util.Random;
+
 /**
  * 快速排序
  * @author by Axel
@@ -40,6 +42,9 @@ public class QuickSort extends AbsSort{
      * @param <E>
      */
     private static <E extends Comparable<E>> int  partition(E[] arr, int l, int r){
+        // 生成[l,r]之间的随机索引,防止有序数组递归，造成栈溢出
+        int p = l + (new Random()).nextInt(r - l + 1);
+        swap(arr, l, p);
         // arr[l+i...j] < v ; arr[j+1...i] >= v
         int j = l;
         for (int i = l + 1;i <=r ; i++) {
