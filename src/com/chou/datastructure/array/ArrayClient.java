@@ -24,6 +24,7 @@ public class ArrayClient {
         array.add(8,5);
         array.add(9,5);
         array.add(10,6);
+        array.add(11,6);
 
         /*System.out.println(array.toString());
         Integer removeInteger = array.removeFirst();
